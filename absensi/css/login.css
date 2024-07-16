@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+.login-box h1 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #333;
+}
+
+.login-box p {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #a1c4fd;
+}
+
+.input-group-button {
+    text-align: right;
+}
+
+.input-group-button button {
+    background: #6a82fb;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.input-group-button button:hover {
+    background: #5a72ea;
+}
