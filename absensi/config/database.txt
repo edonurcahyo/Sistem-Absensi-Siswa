@@ -1,0 +1,123 @@
+CREATE DATABASE absensi;
+
+CREATE TABLE siswa (
+    id INT AUTO_INCREMENT Primary Key,
+    nama VARCHAR(100),
+    kelas VARCHAR(10),
+    username VARCHAR(50),
+    password VARCHAR(255)
+);
+
+INSERT INTO siswa (nama, kelas, username, password) VALUES
+('Hendrikus C.N. Olmedo', 'XII IPA 1', 'hendrikus', MD5('07624')),
+('Abdur Rohim', 'XII IPA 3', 'rohim', MD5('password2')),
+('Helmi Falih', 'XII IPA 3', 'helmi', MD5('password3')),
+('Shani Indira', 'XII IPA 1', 'shani', MD5('51098')),
+('Gita Sekar', 'XII IPA 1', 'gita', MD5('30601')),
+('Feni Fitriyanti', 'XII IPA 2', 'feni', MD5('16199')),
+('Shania Gracia', 'XII IPA 2', 'gracia', MD5('31899')),
+('Yesscia Tamara', 'XII IPA 1', 'yessica', MD5('24902')),
+('Jason Susanto', 'XII IPA 3', 'jason', MD5('25304')),
+('Windah Basudara', 'XII IPA 3', 'windah', MD5('140392'));
+
+CREATE TABLE guru (
+    id INT AUTO_INCREMENT Primary Key,
+    nama VARCHAR(100),
+    mata_pelajaran VARCHAR(100),
+    username VARCHAR(50),
+    password VARCHAR(255)
+);
+
+INSERT INTO guru (nama, mata_pelajaran, username, password) VALUES
+('Brina, S.Pd', 'Matematika', 'brina', MD5('12345')),
+('Nanik, S.Pd', 'Fisika', 'nanik', MD5('12345')),
+('Sulfat, S.Pd', 'Kimia', 'sulfat', MD5('12345')),
+('Gaby, S.Pd', 'Biologi', 'gaby', MD5('12345')),
+('Alvi, S.Pd', 'Bahasa Indonesia', 'alvi', MD5('12345')),
+('Annisa, S.Pd', 'Bahasa Inggris', 'annisa', MD5('12345')),
+('Ramadhan, S.Pd', 'Sejarah', 'ramadhan', MD5('12345')),
+('Malvin, S.Pd', 'Geografi', 'malvin', MD5('12345')),
+('Ariel, S.Pd', 'Sosiologi', 'ariel', MD5('12345')),
+('Jesslyn, S.Pd', 'Ekonomi', 'jesslyn', MD5('12345'));
+
+CREATE TABLE admin (
+    id INT AUTO_INCREMENT Primary Key,
+    nama VARCHAR(100),
+    username VARCHAR(50),
+    password VARCHAR(255)
+);
+
+INSERT INTO admin (nama, username, password) VALUES
+('Admin', 'admin', MD5('admin123'));
+
+CREATE TABLE jadwal (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    kelas VARCHAR(20) NOT NULL,
+    hari ENUM('Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu') NOT NULL,
+    jam_mulai TIME NOT NULL,
+    jam_selesai TIME NOT NULL,
+    mata_pelajaran VARCHAR(50) NOT NULL,
+    guru VARCHAR(100) NOT NULL
+);
+
+INSERT INTO jadwal (kelas, hari, jam_mulai, jam_selesai, mata_pelajaran, guru) VALUES
+('XII IPA 1', 'Senin', '07:00:00', '08:30:00', 'Matematika', 'Brina, S.Pd'),
+('XII IPA 1', 'Senin', '08:30:00', '10:00:00', 'Fisika', 'Nanik, S.Pd'),
+('XII IPA 1', 'Selasa', '07:00:00', '08:30:00', 'Kimia', 'Sulfat, S.Pd'),
+('XII IPA 1', 'Selasa', '08:30:00', '10:00:00', 'Biologi', 'Gaby, S.Pd'),
+('XII IPA 2', 'Rabu', '07:00:00', '08:30:00', 'Bahasa Indonesia', 'Alvi, S.Pd'),
+('XII IPA 2', 'Rabu', '08:30:00', '10:00:00', 'Bahasa Inggris', 'Annisa, S.Pd'),
+('XII IPA 3', 'Kamis', '07:00:00', '08:30:00', 'Sejarah', 'Ramadhan, S.Pd'),
+('XII IPA 3', 'Kamis', '08:30:00', '10:00:00', 'Geografi', 'Malvin, S.Pd');
+
+CREATE TABLE users (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
+    password VARCHAR(255),
+    role ENUM('siswa', 'guru', 'admin') NOT NULL
+);
+
+INSERT INTO users (id, username, password, role) VALUES
+(1, 'hendrikus', MD5('07624'), 'siswa'),
+(2, 'rohim', MD5('password2'), 'siswa'),
+(3, 'helmi', MD5('password3'), 'siswa'),
+(4, 'shani', MD5('51098'), 'siswa'),
+(5, 'gita', MD5('30601'), 'siswa'),
+(6, 'feni', MD5('16199'), 'siswa'),
+(7, 'gracia', MD5('31899'), 'siswa'),
+(8, 'yessica', MD5('24902'), 'siswa'),
+(9, 'jason', MD5('25304'), 'siswa'),
+(10, 'windah', MD5('140392'), 'siswa'),
+(11, 'brina', MD5('12345'), 'guru'),
+(12, 'nanik', MD5('12345'), 'guru'),
+(13, 'sulfat', MD5('12345'), 'guru'),
+(14, 'gaby', MD5('12345'), 'guru'),
+(15, 'alvi', MD5('12345'), 'guru'),
+(16, 'annisa', MD5('12345'), 'guru'),
+(17, 'ramadhan', MD5('12345'), 'guru'),
+(18, 'malvin', MD5('12345'), 'guru'),
+(19, 'ariel', MD5('12345'), 'guru'),
+(20, 'jesslyn', MD5('12345'), 'guru'),
+(21, 'admin', MD5('admin123'), 'admin');
+
+CREATE TABLE absensi (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
+    nama VARCHAR(100) NOT NULL,
+    kelas VARCHAR(50) NOT NULL,
+    tanggal DATE NOT NULL,
+    status ENUM('Hadir', 'Izin', 'Sakit', 'Alpa') NOT NULL,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO absensi (username, nama, kelas, tanggal, status) VALUES
+('hendrikus', 'Hendrikus C.N. Olmedo', 'XII IPA 1', '2024-07-16', 'Hadir'),
+('rohim', 'Abdur Rohim', 'XII IPA 3', '2024-07-16', 'Izin'),
+('helmi', 'Helmi Falih', 'XII IPA 3', '2024-07-16', 'Izin'),
+('shani', 'Shani Indira', 'XII IPA 1', '2024-07-16', 'Alpa'),
+('gita', 'Gita Sekar', 'XII IPA 1', '2024-07-16', 'Hadir'),
+('feni', 'Feni Fitriyanti', 'XII IPA 2', '2024-07-16', 'Izin'),
+('gracia', 'Shania Gracia', 'XII IPA 2', '2024-07-16', 'Hadir'),
+('yessica', 'Yessicia Tamara', 'XII IPA 1', '2024-07-16', 'Alpa'),
+('jason', 'Jason Susanto', 'XII IPA 3', '2024-07-16', 'Hadir'),
+('windah', 'Windah Basudara', 'XII IPA 3', '2024-07-16', 'Izin');

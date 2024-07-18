@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'config/db.php'; // Path untuk file koneksi ke database
+include 'config/db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
@@ -49,11 +49,11 @@ $conn->close();
             <form action="process_login.php" method="post">
                 <div class="input-group">
                     <label for="username"><i class="fas fa-user"></i> Username</label>
-                    <input type="text" placeholder="username" id="username" name="username" required>
+                    <input type="text" placeholder="Username" id="username" name="username" required>
                 </div>
                 <div class="input-group">
                     <label for="password"><i class="fas fa-lock"></i> Password</label>
-                    <input type="password" placeholder="password" id="password" name="password" required>
+                    <input type="password" placeholder="Password" id="password" name="password" required>
                 </div>
                 <div class="input-group-button">
                     <button type="submit">Login</button>

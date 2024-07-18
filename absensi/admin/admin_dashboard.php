@@ -41,12 +41,12 @@ if (!$absensiResult) {
 </head>
 <body>
     <div class="container">
+        <!-- <h1>Dashboard Admin</h1> -->
         <div class="dashboard-box">
-            <h1>Dashboard Admin</h1>
-            <form class="logout-button" method="post" action="../logout.php">
+            <!-- <h1>Dashboard Admin</h1> -->
+            <!-- <form class="logout-button" method="post" action="../logout.php">
                 <button type="submit">Logout</button>
-            </form>
-            
+            </form> -->
             <h2>Data Siswa</h2>
             <table>
                 <tr>
@@ -86,7 +86,7 @@ if (!$absensiResult) {
             <h2>Data Absensi Siswa</h2>
             <table>
                 <tr>
-                    <th>Username</th>
+                    <!-- <th>Username</th> -->
                     <th>Nama</th>
                     <th>Kelas</th>
                     <th>Tanggal</th>
@@ -94,7 +94,7 @@ if (!$absensiResult) {
                 </tr>
                 <?php while ($row = $absensiResult->fetch_assoc()): ?>
                     <tr>
-                        <td><?php echo htmlspecialchars($row['username']); ?></td>
+                        <!-- <td><?php echo htmlspecialchars($row['username']); ?></td> -->
                         <td><?php echo htmlspecialchars($row['nama']); ?></td>
                         <td><?php echo htmlspecialchars($row['kelas']); ?></td>
                         <td><?php echo htmlspecialchars($row['tanggal']); ?></td>
@@ -103,6 +103,9 @@ if (!$absensiResult) {
                 <?php endwhile; ?>
             </table>
         </div>
+        <form class="logout-button" method="post" action="../logout.php">
+                <button type="submit">Logout</button>
+        </form>
     </div>
 </body>
 </html>

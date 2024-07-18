@@ -7,7 +7,6 @@ if (!isset($_SESSION['user']) || $_SESSION['role'] != 'guru') {
 
 include '../config/db.php';
 
-// Ambil data guru dari tabel guru berdasarkan username
 $username = $_SESSION['user'];
 $stmt = $conn->prepare("SELECT * FROM guru WHERE username = ?");
 $stmt->bind_param("s", $username);
@@ -19,7 +18,6 @@ $mata_pelajaran = $guru['mata_pelajaran'];
 
 $stmt->close();
 
-// Ambil data absensi siswa
 $absensiQuery = "SELECT username, nama, kelas, tanggal, status FROM absensi";
 $absensiResult = $conn->query($absensiQuery);
 
