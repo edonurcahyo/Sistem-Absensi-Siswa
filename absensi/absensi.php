@@ -5,9 +5,8 @@ if (!isset($_SESSION['user']) || $_SESSION['role'] != 'siswa') {
     exit;
 }
 
-include 'config/db.php'; // Path untuk file koneksi ke database
+include 'config/db.php';
 
-// Ambil data siswa dari tabel siswa berdasarkan username
 $username = $_SESSION['user'];
 $stmt = $conn->prepare("SELECT * FROM siswa WHERE username = ?");
 $stmt->bind_param("s", $username);
@@ -20,15 +19,13 @@ $kelas = $siswa['kelas'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tanggal = date('Y-m-d');
     $status = $_POST['status'];
-
-    // Cek apakah siswa sudah mengisi absensi hari ini
+ 
     $stmt = $conn->prepare("SELECT * FROM absensi WHERE username = ? AND tanggal = ?");
     $stmt->bind_param("ss", $username, $tanggal);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows == 0) {
-        // Insert data absensi baru
         $stmt = $conn->prepare("INSERT INTO absensi (username, nama, kelas, tanggal, status) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("sssss", $username, $nama, $kelas, $tanggal, $status);
         $stmt->execute();

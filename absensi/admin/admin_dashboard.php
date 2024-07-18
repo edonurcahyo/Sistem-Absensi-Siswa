@@ -7,7 +7,6 @@ if (!isset($_SESSION['user']) || $_SESSION['role'] != 'admin') {
 
 include '../config/db.php';
 
-// Ambil data siswa
 $siswaQuery = "SELECT nama, kelas, username FROM siswa";
 $siswaResult = $conn->query($siswaQuery);
 
@@ -15,7 +14,6 @@ if (!$siswaResult) {
     die("Query error: " . $conn->error);
 }
 
-// Ambil data guru
 $guruQuery = "SELECT nama, mata_pelajaran, username FROM guru";
 $guruResult = $conn->query($guruQuery);
 
@@ -23,7 +21,6 @@ if (!$guruResult) {
     die("Query error: " . $conn->error);
 }
 
-// Ambil data absensi siswa
 $absensiQuery = "SELECT username, nama, kelas, tanggal, status FROM absensi";
 $absensiResult = $conn->query($absensiQuery);
 
@@ -41,12 +38,7 @@ if (!$absensiResult) {
 </head>
 <body>
     <div class="container">
-        <!-- <h1>Dashboard Admin</h1> -->
         <div class="dashboard-box">
-            <!-- <h1>Dashboard Admin</h1> -->
-            <!-- <form class="logout-button" method="post" action="../logout.php">
-                <button type="submit">Logout</button>
-            </form> -->
             <h2>Data Siswa</h2>
             <table>
                 <tr>
@@ -86,7 +78,6 @@ if (!$absensiResult) {
             <h2>Data Absensi Siswa</h2>
             <table>
                 <tr>
-                    <!-- <th>Username</th> -->
                     <th>Nama</th>
                     <th>Kelas</th>
                     <th>Tanggal</th>
@@ -94,7 +85,6 @@ if (!$absensiResult) {
                 </tr>
                 <?php while ($row = $absensiResult->fetch_assoc()): ?>
                     <tr>
-                        <!-- <td><?php echo htmlspecialchars($row['username']); ?></td> -->
                         <td><?php echo htmlspecialchars($row['nama']); ?></td>
                         <td><?php echo htmlspecialchars($row['kelas']); ?></td>
                         <td><?php echo htmlspecialchars($row['tanggal']); ?></td>
