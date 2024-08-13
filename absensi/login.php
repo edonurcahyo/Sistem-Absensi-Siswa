@@ -39,6 +39,7 @@ $conn->close();
 <head>
     <title>Login</title>
     <link rel="shortcut icon" href="images\logo.ico" type="image/x-icon">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 <body>
@@ -48,11 +49,11 @@ $conn->close();
             <p>Ijinkan Sistem Mengenali Anda.</p>
             <form action="process_login.php" method="post">
                 <div class="input-group">
-                    <label for="username"><i class="fas fa-user"></i> Username</label>
+                    <label for="username"><i class='bx bxs-user'></i> Username</label>
                     <input type="text" placeholder="Username" id="username" name="username" required>
                 </div>
                 <div class="input-group">
-                    <label for="password"><i class="fas fa-lock"></i> Password</label>
+                    <label for="password"><i class='bx bxs-lock-alt'></i> Password</label>
                     <input type="password" placeholder="Password" id="password" name="password" required>
                 </div>
                 <div class="input-group-button">
